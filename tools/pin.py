@@ -228,7 +228,8 @@ def toc_interface(content):
 
 def check_zip(folders, data, max_files=MAX_FILES, max_bytes=MAX_BYTES, max_depth=MAX_DEPTH):
     """The launcher's rules for an addon's release zip, `data`, that is to hold exactly `folders`.
-    Every entry lies under one of the folders by a safe path, is named once, is a plain file (no
+    A root LICENSE file is checked as package metadata. Every other entry lies under one of the
+    folders by a safe path. Each file is named once, is a plain file (no
     symbolic link, no encrypted entry, no program) stored or deflated, unpacks to the size it
     announces, and all stay within the bounds. Each folder has its `<Folder>/<Folder>.toc` with an
     interface number the game loads. Returns those numbers, sorted."""
@@ -248,14 +249,15 @@ def check_zip(folders, data, max_files=MAX_FILES, max_bytes=MAX_BYTES, max_depth
         check_path(path)
         need(not any(is_control(c) or c in '<>"|?*' for c in path), f"{name!r} holds a character Windows takes in no file name")
         parts = path.split("/")
-        need(parts[0] in folders, f"{name} lies outside the folders ({', '.join(folders)})")
+        license_file = name == "LICENSE" and not is_dir
+        need(license_file or parts[0] in folders, f"{name} lies outside the folders ({', '.join(folders)})")
         need(len(parts) <= max_depth, f"{name} lies more than {max_depth} folders deep")
         # A Unix mode is in the upper half of the attributes when the entry was made on Unix.
         mode = info.external_attr >> 16 if info.create_system == 3 else 0
         need(mode & 0o120000 != 0o120000, f"{name} is a symbolic link")
         if is_dir:
             continue
-        need(len(parts) >= 2, f"{name} is a file where a folder belongs")
+        need(license_file or len(parts) >= 2, f"{name} is a file where a folder belongs")
         need(not info.flag_bits & 1, f"{name} is encrypted")
         need(info.compress_type in (zipfile.ZIP_STORED, zipfile.ZIP_DEFLATED), f"{name} is packed with method {info.compress_type}, not stored or deflated")
         extension = ascii_lower(path.rsplit(".", 1)[1]) if "." in path else ""

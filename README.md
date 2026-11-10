@@ -75,7 +75,8 @@ otherwise.
 
 The same rules as the game's launcher, so that whatever is pinned here also installs:
 
-- Nothing but the entry's `folders` at the top, and each of them with its `<Folder>/<Folder>.toc`.
+- At the top, the entry's `folders` and optionally a `LICENSE` file. Each folder must have its
+  `<Folder>/<Folder>.toc`. The launcher does not extract the root license.
 - Each of those TOCs names `## Interface` `11200` or `30300`, the two numbers the game loads
   without its "out of date" tick.
 - No path that leaves its folder (`..`, a leading `/`, a drive letter, a backslash), no name

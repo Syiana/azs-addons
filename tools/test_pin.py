@@ -118,6 +118,7 @@ class Repo:
 class ZipRules(unittest.TestCase):
     def test_an_addons_zip_passes_and_names_its_interfaces(self):
         entries = [
+            file("LICENSE", b"License text\n"),
             file("SomeAddon/SomeAddon.toc", TOC),
             file("SomeAddon/Core.lua", b"local x = 1\n" * 400, deflated=True),
             file("SomeAddon/Media/", b"", mode=0o040755),
@@ -140,6 +141,8 @@ class ZipRules(unittest.TestCase):
             "a drive letter": [toc, file("C:/evil.lua")],
             "a backslash path": [toc, file("SomeAddon\\..\\..\\evil.lua")],
             "a file beside the folders": [toc, file("readme.txt")],
+            "a root license symlink": [toc, file("LICENSE", b"SomeAddon", mode=0o120777)],
+            "a root license directory": [toc, file("LICENSE/", mode=0o040755)],
             "a folder the entry does not list": [toc, file("Other/Other.toc", TOC)],
             "the launcher's state": [toc, file(".azs/installed.json")],
             "a device name": [toc, file("SomeAddon/nul.lua")],
