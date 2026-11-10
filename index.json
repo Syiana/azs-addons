@@ -1,5 +1,32 @@
 {
   "schema": 1,
-  "serial": 0,
-  "addons": []
+  "serial": 1,
+  "addons": [
+    {
+      "id": "survivor-ui",
+      "name": "Survivor UI",
+      "author": "morderous",
+      "repo": "morderous/survivor-ui",
+      "description": "Unit frames, nameplates and a run tracker in the original game's look.",
+      "category": "Unit Frames",
+      "license": "GPL-3.0",
+      "folders": [
+        "SurvivorUI",
+        "SurvivorPlates"
+      ],
+      "requires": [],
+      "interface": [
+        11200
+      ],
+      "version": "v3.0.65",
+      "asset_url": "https://github.com/morderous/survivor-ui/releases/download/v3.0.65/SurvivorUI-v3.0.65.zip",
+      "size": 9556105,
+      "sha256": "7fb5118709e29960de7e61d4bbc190ee3382b313cd74db3370577aaba1b8649c",
+      "reborn": {
+        "status": "untested",
+        "tested": "",
+        "notes": ""
+      }
+    }
+  ]
 }
