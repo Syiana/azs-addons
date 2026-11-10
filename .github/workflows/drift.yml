@@ -1,0 +1,42 @@
+# Every night: fetch each pinned zip again. One that is no longer the pinned bytes (its author
+# replaced a release's file) or that no longer passes the rules opens an issue. Players are safe
+# either way, since the launcher installs nothing but the pinned bytes; the issue is so that the
+# addon gets a new pin or leaves the index.
+name: drift
+
+on:
+  schedule:
+    - cron: "41 3 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  drift:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fetch and check every pinned zip
+        id: check
+        continue-on-error: true
+        run: python tools/pin.py check --assets 2> drift.txt
+      - name: Open or update the issue
+        if: steps.check.outcome == 'failure'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="A pinned zip changed or broke a rule"
+          { echo '```'; cat drift.txt; echo '```'; } > body.md
+          open=$(gh issue list --state open --search "in:title \"$title\"" --json number --jq '.[0].number // empty')
+          if [ -n "$open" ]; then
+            gh issue comment "$open" --body-file body.md
+          else
+            gh issue create --title "$title" --body-file body.md
+          fi
+          exit 1

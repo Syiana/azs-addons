@@ -1,0 +1,24 @@
+# Every pull request and every push to main: the script's own tests, the entries, index.json, and
+# each pinned zip as GitHub serves it now. Read-only, so a pull request from a fork runs it too.
+name: check
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: The pin script's tests
+        run: python tools/test_pin.py
+      - name: The entries, the index and the pinned zips
+        run: python tools/pin.py check --assets

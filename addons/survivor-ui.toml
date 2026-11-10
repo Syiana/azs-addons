@@ -1,0 +1,21 @@
+id = "survivor-ui"
+name = "Survivor UI"
+author = "morderous"
+repo = "morderous/survivor-ui"
+description = "Unit frames, nameplates and a run tracker in the original game's look."
+category = "Unit Frames"
+license = "GPL-3.0"
+# Every folder the release zip puts into Interface\AddOns, and nothing else.
+folders = ["SurvivorUI", "SurvivorPlates"]
+requires = []
+
+[source]
+type = "release"
+# The release's zip; `*` stands for the version. The installer zip beside it does not match.
+asset = "SurvivorUI-v*.zip"
+
+# Filled in by hand after a run of the game's addon harness.
+[reborn]
+status = "untested"
+tested = ""
+notes = ""

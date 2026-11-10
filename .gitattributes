@@ -1,0 +1,2 @@
+# index.json is signed byte for byte: the same bytes on every checkout.
+index.json text eol=lf

@@ -1,0 +1,73 @@
+# Once a day and on request: pin each addon's newest release and open a pull request with the new
+# index.json. Merging that pull request is the review; nothing reaches players before it is merged
+# and the index is signed (README.md).
+#
+# The repository must allow Actions to open pull requests (Settings > Actions > General >
+# "Allow GitHub Actions to create and approve pull requests").
+name: pin
+
+on:
+  schedule:
+    - cron: "17 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  pin:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Pin the newest releases
+        id: pin
+        shell: bash
+        # An addon whose release breaks a rule keeps the pin it has; the others still move.
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python tools/pin.py pin 2> failed.txt | tee pinned.txt
+      - name: Open the pull request
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if git diff --quiet -- index.json; then
+            echo "Nothing new to pin."
+            exit 0
+          fi
+          serial=$(python -c 'import json; print(json.load(open("index.json"))["serial"])')
+          branch="pin/serial-$serial"
+          {
+            echo "The pin script fetched each zip below, checked it against the rules and pinned it by size and SHA-256."
+            echo
+            echo "Those checks are structural. Before merging, read what changed in each author's repository between the old and the new tag: merging this is the review."
+            echo
+            echo '```'
+            cat pinned.txt
+            echo '```'
+            if [ -s failed.txt ]; then
+              echo
+              echo "Not pinned (these keep the pin they had):"
+              echo
+              echo '```'
+              cat failed.txt
+              echo '```'
+            fi
+          } > body.md
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          git commit -m "Pin: index serial $serial" -- index.json
+          git push --force origin "$branch"
+          gh pr create --head "$branch" --title "Pin: index serial $serial" --body-file body.md \
+            || gh pr edit "$branch" --body-file body.md
+      - name: Say what was not pinned
+        if: steps.pin.outcome == 'failure'
+        run: |
+          cat failed.txt
+          exit 1
