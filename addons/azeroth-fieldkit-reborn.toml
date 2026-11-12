@@ -1,0 +1,18 @@
+id = "azeroth-fieldkit-reborn"
+name = "Azeroth FieldKit Reborn"
+author = "Kevin Radlowski / Maidenhead; MASH by Malk"
+repo = "Maidenquinn/azeroth-fieldkit-reborn"
+description = "Combat HUD, meters, learned spells, run jewelry and world markers adapted to Reborn. Initial port; live validation pending."
+category = "Combat"
+license = "LicenseRef-FieldKit-Notice"
+folders = ["AzerothFieldKitReborn"]
+requires = []
+
+[source]
+type = "release"
+asset = "AzerothFieldKitReborn-*.zip"
+
+[reborn]
+status = "untested"
+tested = ""
+notes = "Offline-tested against API files from client 0.6.1. Requires bundled AzerothSurvivorsAPI. Live gameplay and co-op acceptance pending. See repository notices for inherited rights."
