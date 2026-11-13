@@ -1,0 +1,19 @@
+# Proposed entry only. In-game compatibility version is pending.
+id = "asr-suite"
+name = "ASR Suite"
+author = "AlexEnotov"
+repo = "AlexEnotov/ASR-Addons"
+description = "Optional shared settings, compatibility controls and interface editor for ASR addons."
+category = "Combat"
+license = "GPL-3.0-only"
+folders = ["ASRSuite"]
+requires = []
+
+[source]
+type = "release"
+asset = "ASRSuite-v*.zip"
+
+[reborn]
+status = "untested"
+tested = ""
+notes = ""
