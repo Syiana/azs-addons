@@ -1,0 +1,19 @@
+# Proposed entry only. In-game compatibility version is pending.
+id = "asr-advisor"
+name = "ASR Advisor"
+author = "AlexEnotov"
+repo = "AlexEnotov/ASR-Addons"
+description = "Build planner and card recommendations for Azeroth Survivors Reborn."
+category = "Combat"
+license = "GPL-3.0-only"
+folders = ["ASAdvisor"]
+requires = []
+
+[source]
+type = "release"
+asset = "ASRAdvisor-v*.zip"
+
+[reborn]
+status = "untested"
+tested = ""
+notes = ""
