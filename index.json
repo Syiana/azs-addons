@@ -1,7 +1,107 @@
 {
   "schema": 1,
-  "serial": 2,
+  "serial": 3,
   "addons": [
+    {
+      "id": "asr-advisor",
+      "name": "ASR Advisor",
+      "author": "AlexEnotov",
+      "repo": "AlexEnotov/ASR-Addons",
+      "description": "Build planner and card recommendations for Azeroth Survivors Reborn.",
+      "category": "Combat",
+      "license": "GPL-3.0-only",
+      "folders": [
+        "ASAdvisor"
+      ],
+      "requires": [],
+      "interface": [
+        30300
+      ],
+      "version": "v0.5.14",
+      "asset_url": "https://github.com/AlexEnotov/ASR-Addons/releases/download/v0.5.14/ASRAdvisor-v0.5.14.zip",
+      "size": 82757,
+      "sha256": "01e1dea771fdc9cb3f3c0096f8c5999ba85567d988b41fa874beb94da4b42779",
+      "reborn": {
+        "status": "untested",
+        "tested": "",
+        "notes": ""
+      }
+    },
+    {
+      "id": "asr-combat-text",
+      "name": "ASR Combat Text",
+      "author": "AlexEnotov",
+      "repo": "AlexEnotov/ASR-Addons",
+      "description": "Standalone movable combat numbers with shared and per-type settings.",
+      "category": "Combat",
+      "license": "GPL-3.0-only",
+      "folders": [
+        "ASRCombatText"
+      ],
+      "requires": [],
+      "interface": [
+        30300
+      ],
+      "version": "v0.5.14",
+      "asset_url": "https://github.com/AlexEnotov/ASR-Addons/releases/download/v0.5.14/ASRCombatText-v0.5.14.zip",
+      "size": 26061,
+      "sha256": "75344c82301cc850c9bd8d24b8167edeb8c041fc1b3e9710223c0553d5ceed56",
+      "reborn": {
+        "status": "untested",
+        "tested": "",
+        "notes": ""
+      }
+    },
+    {
+      "id": "asr-stats",
+      "name": "ASR Stats",
+      "author": "AlexEnotov",
+      "repo": "AlexEnotov/ASR-Addons",
+      "description": "Compact current character statistics for Azeroth Survivors Reborn.",
+      "category": "Combat",
+      "license": "GPL-3.0-only",
+      "folders": [
+        "ASRStats"
+      ],
+      "requires": [],
+      "interface": [
+        30300
+      ],
+      "version": "v0.5.14",
+      "asset_url": "https://github.com/AlexEnotov/ASR-Addons/releases/download/v0.5.14/ASRStats-v0.5.14.zip",
+      "size": 21759,
+      "sha256": "987426e66c47e5847c1470f74595a30acc3dcc5f75498399ffc1bfa59676ad72",
+      "reborn": {
+        "status": "untested",
+        "tested": "",
+        "notes": ""
+      }
+    },
+    {
+      "id": "asr-suite",
+      "name": "ASR Suite",
+      "author": "AlexEnotov",
+      "repo": "AlexEnotov/ASR-Addons",
+      "description": "Optional shared settings, compatibility controls and interface editor for ASR addons.",
+      "category": "Combat",
+      "license": "GPL-3.0-only",
+      "folders": [
+        "ASRSuite"
+      ],
+      "requires": [],
+      "interface": [
+        30300
+      ],
+      "version": "v0.5.14",
+      "asset_url": "https://github.com/AlexEnotov/ASR-Addons/releases/download/v0.5.14/ASRSuite-v0.5.14.zip",
+      "size": 40190,
+      "sha256": "c8d3c38be976b98d8641e457a947128d981f970fe9accb8ef0f2a823aec56cc6",
+      "reborn": {
+        "status": "untested",
+        "tested": "",
+        "notes": ""
+      }
+    },
     {
       "id": "survivor-ui",
       "name": "Survivor UI",
@@ -18,10 +118,10 @@
       "interface": [
         11200
       ],
-      "version": "v3.0.67",
-      "asset_url": "https://github.com/morderous/survivor-ui/releases/download/v3.0.67/SurvivorUI-v3.0.67.zip",
-      "size": 9557050,
-      "sha256": "5534cb21840b9839c17b3900bfee3368fc0670546d51c29377c3f1c616784b73",
+      "version": "v3.0.68",
+      "asset_url": "https://github.com/morderous/survivor-ui/releases/download/v3.0.68/SurvivorUI-v3.0.68.zip",
+      "size": 9557926,
+      "sha256": "089fdb20c4a386ad5de427ab39e198ea55be34b364c675edb6829d0f8f3bc316",
       "reborn": {
         "status": "untested",
         "tested": "",
