@@ -1,0 +1,19 @@
+# Proposed entry only. In-game compatibility version is pending.
+id = "asr-combat-text"
+name = "ASR Combat Text"
+author = "AlexEnotov"
+repo = "AlexEnotov/ASR-Addons"
+description = "Standalone movable combat numbers with shared and per-type settings."
+category = "Combat"
+license = "GPL-3.0-only"
+folders = ["ASRCombatText"]
+requires = []
+
+[source]
+type = "release"
+asset = "ASRCombatText-v*.zip"
+
+[reborn]
+status = "untested"
+tested = ""
+notes = ""
