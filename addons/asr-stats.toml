@@ -1,0 +1,19 @@
+# Proposed entry only. In-game compatibility version is pending.
+id = "asr-stats"
+name = "ASR Stats"
+author = "AlexEnotov"
+repo = "AlexEnotov/ASR-Addons"
+description = "Compact current character statistics for Azeroth Survivors Reborn."
+category = "Combat"
+license = "GPL-3.0-only"
+folders = ["ASRStats"]
+requires = []
+
+[source]
+type = "release"
+asset = "ASRStats-v*.zip"
+
+[reborn]
+status = "untested"
+tested = ""
+notes = ""
