@@ -63,6 +63,22 @@ tested = ""                         # the game version it was tried on
 notes = ""
 ```
 
+Two optional lines go beside `name` for the game's page:
+
+```toml
+title = "|cff33ff99Survivor|r UI"   # the name in your colours, as your TOC's ## Title
+icon = "INV_Misc_Book_09"           # one of the game's icons, its file name in Interface\Icons
+```
+
+- `title` is `name` with the game's colour codes, `|c` and eight hex digits (`AARRGGBB`) and
+  `|r`, and nothing else: no texture, no link, no other words. The search goes by `name`.
+- `icon` is the file name of one of the game's own icons without its folder or extension, as
+  Wowhead shows it on an item's or spell's page. The page cannot show a picture from your zip:
+  it is not on the player's disk before the install. Without `icon`, and when the game has no
+  icon of that name, the page shows the category's.
+
+A game older than 0.6.5 shows the plain name and the category's icon.
+
 The entry alone offers nothing: the addon appears in the game once the pin workflow has pinned a
 release and that pull request is merged and signed. The author is asked first; we link to their
 work, we do not ship it.

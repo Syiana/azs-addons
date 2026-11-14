@@ -225,6 +225,12 @@ class Entries(unittest.TestCase):
             "an unknown key": {'license = "MIT"': 'licence = "MIT"'},
             "an id that is not its file's name": {'id = "some-addon"': 'id = "other"'},
             "a colour code in the name": {"Some Addon": "|cffff0000Ours|r"},
+            "a title that is another name": {'license = "MIT"': 'license = "MIT"\ntitle = "|cff33ff99Other|r Addon"'},
+            "a link in the title": {'license = "MIT"': 'license = "MIT"\ntitle = "|Hitem:1|hSome Addon|h"'},
+            "an escaped bar in the title": {'license = "MIT"': 'license = "MIT"\ntitle = "||Some Addon"'},
+            "a colour code cut short": {'license = "MIT"': 'license = "MIT"\ntitle = "|cff33Some Addon"'},
+            "an icon that is a path": {'license = "MIT"': 'license = "MIT"\nicon = "Interface/Icons/INV_Misc_Book_09"'},
+            "an icon with an extension": {'license = "MIT"': 'license = "MIT"\nicon = "INV_Misc_Book_09.blp"'},
             "an empty author": {'author = "someone"': 'author = " "'},
             "a repo that is no owner/name": {'repo = "someone/some-addon"': 'repo = "someone"'},
             "a repo that is an address": {'repo = "someone/some-addon"': 'repo = "https://github.com/someone/x"'},
@@ -368,6 +374,18 @@ class Pinning(unittest.TestCase):
         index = self.repo.index()
         row = index["addons"][0]
         self.assertEqual((index["serial"], row["description"], row["reborn"]), (2, "Two lines.", {"status": "works", "tested": "0.4.11", "notes": ""}))
+        self.assertEqual(pin.check(self.repo.root), [])
+
+    def test_a_title_and_an_icon_reach_the_index_only_when_set(self):
+        self.repo.entry("some-addon", ["SomeAddon"])
+        self.hub.release("someone/some-addon", "v1", {"Addon-v1.zip": addon_zip("SomeAddon")})
+        self.assertEqual(self.pin(), {})
+        self.assertNotIn("title", self.repo.index()["addons"][0])
+        self.repo.entry("some-addon", ["SomeAddon"], **{'license = "MIT"': 'license = "MIT"\ntitle = "|cff33ff99Some|r Addon"\nicon = "INV_Misc_Book_09"'})
+        self.assertEqual(self.pin(offline=True), {})
+        index = self.repo.index()
+        row = index["addons"][0]
+        self.assertEqual((index["serial"], row["title"], row["icon"]), (2, "|cff33ff99Some|r Addon", "INV_Misc_Book_09"))
         self.assertEqual(pin.check(self.repo.root), [])
 
     def test_a_pinned_zip_that_changed_is_reported(self):

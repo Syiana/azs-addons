@@ -41,7 +41,9 @@ CATEGORIES = ("Unit Frames", "Combat", "Loot", "Map", "Chat")
 # A TOC is a few lines; one above this is no TOC.
 TOC_LIMIT = 1 << 20
 
-ENTRY_KEYS = {"id", "name", "author", "repo", "description", "category", "license", "folders", "requires", "source", "reborn"}
+ENTRY_KEYS = {"id", "name", "title", "icon", "author", "repo", "description", "category", "license", "folders", "requires", "source", "reborn"}
+# The game's colour codes, `|c` and eight hex digits and `|r`: the one use of | a title may make.
+COLOUR = re.compile(r"\|c[0-9a-fA-F]{8}|\|r")
 TEXTS = {"name": 80, "author": 80, "description": 400, "category": 40, "license": 40, "version": 40}
 REBORN_TEXTS = {"tested": 40, "notes": 400}
 
@@ -120,6 +122,19 @@ def check_fields(addon):
         check_text(f"reborn.{field}", reborn.get(field), limit)
     need(reborn.get("status") in STATUSES, f"reborn.status {reborn.get('status')!r} is not works, partial, broken or untested")
     need(addon["name"].strip() and addon["author"].strip(), "name and author must not be empty")
+    # Both optional; an index row carries them only when set.
+    title, icon = addon.get("title", ""), addon.get("icon", "")
+    need(
+        isinstance(title, str)
+        and len(title) <= 200
+        and not any(is_control(c) for c in title)
+        and (title == "" or COLOUR.sub("", title) == addon["name"]),
+        "title is not the name with colour codes (|cAARRGGBB and |r) only",
+    )
+    need(
+        isinstance(icon, str) and re.fullmatch(r"[A-Za-z0-9_-]{0,64}", icon) is not None,
+        f"icon {icon!r} is not an icon's file name: letters, digits, _ and -",
+    )
     repo = addon.get("repo")
     plain = r"(?!\.{1,2}$)[A-Za-z0-9_.-]+"
     need(isinstance(repo, str) and re.fullmatch(f"{plain}/{plain}", repo) is not None, f"repo {repo!r} is not owner/name")
@@ -290,7 +305,7 @@ def load_entry(path):
     try:
         entry = tomllib.loads(path.read_text(encoding="utf-8"))
         need(set(entry) <= ENTRY_KEYS, f"unknown key {', '.join(sorted(set(entry) - ENTRY_KEYS))}")
-        for key in ("description", "category", "license"):
+        for key in ("title", "icon", "description", "category", "license"):
             entry.setdefault(key, "")
         entry.setdefault("requires", [])
         reborn = entry.setdefault("reborn", {})
@@ -337,8 +352,9 @@ def load_index(root):
 
 
 def index_row(entry, pin):
-    """An index row: the entry, and the pin's five fields."""
-    return {
+    """An index row: the entry, and the pin's five fields. `title` and `icon` only when set, so
+    the rows of entries without them keep their bytes."""
+    row = {
         "id": entry["id"],
         "name": entry["name"],
         "author": entry["author"],
@@ -355,6 +371,8 @@ def index_row(entry, pin):
         "sha256": pin["sha256"],
         "reborn": {key: entry["reborn"][key] for key in ("status", "tested", "notes")},
     }
+    row.update({key: entry[key] for key in ("title", "icon") if entry.get(key)})
+    return row
 
 
 def write_index(root, index):
