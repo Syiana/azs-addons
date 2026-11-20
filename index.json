@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "serial": 13,
+  "serial": 14,
   "addons": [
     {
       "id": "asr-advisor",
@@ -218,14 +218,14 @@
       "interface": [
         11200
       ],
-      "version": "v0.1.0-reborn.37",
-      "asset_url": "https://github.com/Maidenquinn/azeroth-fieldkit-reborn/releases/download/v0.1.0-reborn.37/AzerothFieldKitReborn-0.1.0-reborn.37.zip",
-      "size": 25376730,
-      "sha256": "fe43bc7d7f1f23551d43435fc11ec371efafca76bcf690bf877c209f87878fae",
+      "version": "v0.1.0-reborn.38",
+      "asset_url": "https://github.com/Maidenquinn/azeroth-fieldkit-reborn/releases/download/v0.1.0-reborn.38/AzerothFieldKitReborn-0.1.0-reborn.38.zip",
+      "size": 25377384,
+      "sha256": "65230886cc7fd4e8bc6ce19b635a179ccad8a7b9d348d5f67d81c319c62b3f07",
       "reborn": {
         "status": "works",
-        "tested": "0.6.9 / 0.1.0-reborn.37",
-        "notes": "Client 0.6.9: repaired previews, native Endless countdown/state, live stat caps and large meter totals. Fourteen languages; profiles/layouts retained. Requires bundled AzerothSurvivorsAPI. Automated API, locale/font, settings and persistence checks pass. Native FR/Elwynn preview/cap inspection passed; live Endless/co-op not certified. See release notes and rights notices."
+        "tested": "0.6.9 / 0.1.0-reborn.38",
+        "notes": "Client 0.6.9: distinct hit/crit records for spells sharing icons, stable spell ID lookup, improved meter contrast and readable damage columns. Maintainer passed in-game recipe on 2026-11-20. Automated API, locale, settings and packaging checks pass. Existing profiles preserved. Live co-op/Endless and game-team security certification are not claimed. See stable .38 release and rights notices."
       }
     },
     {

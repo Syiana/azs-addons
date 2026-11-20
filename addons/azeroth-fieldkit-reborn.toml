@@ -14,5 +14,5 @@ asset = "AzerothFieldKitReborn-*.zip"
 
 [reborn]
 status = "works"
-tested = "0.6.9 / 0.1.0-reborn.37"
-notes = "Client 0.6.9: repaired previews, native Endless countdown/state, live stat caps and large meter totals. Fourteen languages; profiles/layouts retained. Requires bundled AzerothSurvivorsAPI. Automated API, locale/font, settings and persistence checks pass. Native FR/Elwynn preview/cap inspection passed; live Endless/co-op not certified. See release notes and rights notices."
+tested = "0.6.9 / 0.1.0-reborn.38"
+notes = "Client 0.6.9: distinct hit/crit records for spells sharing icons, stable spell ID lookup, improved meter contrast and readable damage columns. Maintainer passed in-game recipe on 2026-11-20. Automated API, locale, settings and packaging checks pass. Existing profiles preserved. Live co-op/Endless and game-team security certification are not claimed. See stable .38 release and rights notices."
