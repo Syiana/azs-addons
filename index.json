@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "serial": 13,
+  "serial": 14,
   "addons": [
     {
       "id": "asr-advisor",
@@ -218,10 +218,10 @@
       "interface": [
         11200
       ],
-      "version": "v0.1.0-reborn.37",
-      "asset_url": "https://github.com/Maidenquinn/azeroth-fieldkit-reborn/releases/download/v0.1.0-reborn.37/AzerothFieldKitReborn-0.1.0-reborn.37.zip",
-      "size": 25376730,
-      "sha256": "fe43bc7d7f1f23551d43435fc11ec371efafca76bcf690bf877c209f87878fae",
+      "version": "v0.1.0-reborn.38",
+      "asset_url": "https://github.com/Maidenquinn/azeroth-fieldkit-reborn/releases/download/v0.1.0-reborn.38/AzerothFieldKitReborn-0.1.0-reborn.38.zip",
+      "size": 25377384,
+      "sha256": "65230886cc7fd4e8bc6ce19b635a179ccad8a7b9d348d5f67d81c319c62b3f07",
       "reborn": {
         "status": "works",
         "tested": "0.6.9 / 0.1.0-reborn.37",
@@ -251,6 +251,31 @@
         "status": "works",
         "tested": "0.6.7 / 0.1.0-reborn.1",
         "notes": "Single-player recipe passed on 0.6.7: history, themes, icons, shared defaults, in-addon migration, reload persistence, classic rollback and safety recovery. Automated and installed-API checks pass. Requires bundled AzerothSurvivorsAPI. Co-op and all class/resolution combinations are not independently certified. See bundled notices."
+      }
+    },
+    {
+      "id": "reborn-build-planner",
+      "name": "Reborn Build Planner",
+      "author": "Maidenquinn / Maidenhead",
+      "repo": "Maidenquinn/reborn-build-planner",
+      "description": "Plan, import and track class builds with a read-only in-game HUD, spell priorities, equipment alternatives and four stages.",
+      "category": "Combat",
+      "license": "NOASSERTION",
+      "folders": [
+        "RebornBuildPlanner"
+      ],
+      "requires": [],
+      "interface": [
+        30300
+      ],
+      "version": "v0.5.1",
+      "asset_url": "https://github.com/Maidenquinn/reborn-build-planner/releases/download/v0.5.1/RebornBuildPlanner-v0.5.1.zip",
+      "size": 355285,
+      "sha256": "2e582b46bf647fecf54736af00abdd388b27ac3d6813bd258761d0cb0771fb1a",
+      "reborn": {
+        "status": "untested",
+        "tested": "",
+        "notes": "Author-tested v0.5.0 UI, minimap launcher, import/export and read-only tracker. Author confirms permission to distribute official catalogue data. Exact game-client version has not been recorded; further compatibility testing welcome. Requires bundled AzerothSurvivors and AzerothSurvivorsAPI; no automated gameplay actions."
       }
     },
     {
