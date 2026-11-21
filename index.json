@@ -254,6 +254,31 @@
       }
     },
     {
+      "id": "reborn-build-planner",
+      "name": "Reborn Build Planner",
+      "author": "Maidenquinn / Maidenhead",
+      "repo": "Maidenquinn/reborn-build-planner",
+      "description": "Plan, import and track class builds with a read-only in-game HUD, spell priorities, equipment alternatives and four stages.",
+      "category": "Combat",
+      "license": "NOASSERTION",
+      "folders": [
+        "RebornBuildPlanner"
+      ],
+      "requires": [],
+      "interface": [
+        30300
+      ],
+      "version": "v0.5.1",
+      "asset_url": "https://github.com/Maidenquinn/reborn-build-planner/releases/download/v0.5.1/RebornBuildPlanner-v0.5.1.zip",
+      "size": 355285,
+      "sha256": "2e582b46bf647fecf54736af00abdd388b27ac3d6813bd258761d0cb0771fb1a",
+      "reborn": {
+        "status": "untested",
+        "tested": "",
+        "notes": "Author-tested v0.5.0 UI, minimap launcher, import/export and read-only tracker. Author confirms permission to distribute official catalogue data. Exact game-client version has not been recorded; further compatibility testing welcome. Requires bundled AzerothSurvivors and AzerothSurvivorsAPI; no automated gameplay actions."
+      }
+    },
+    {
       "id": "survivor-ui",
       "name": "Survivor UI",
       "author": "morderous",
