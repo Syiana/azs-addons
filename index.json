@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "serial": 14,
+  "serial": 15,
   "addons": [
     {
       "id": "asr-advisor",
@@ -258,7 +258,7 @@
       "name": "Reborn Build Planner",
       "author": "Maidenquinn / Maidenhead",
       "repo": "Maidenquinn/reborn-build-planner",
-      "description": "Plan, import and track class builds with a read-only in-game HUD, spell priorities, equipment alternatives and four stages.",
+      "description": "Plan, capture live runs, import and track class builds with a read-only HUD, spell priorities and equipment alternatives.",
       "category": "Combat",
       "license": "NOASSERTION",
       "folders": [
@@ -275,7 +275,7 @@
       "reborn": {
         "status": "untested",
         "tested": "",
-        "notes": "Author-tested v0.5.0 UI, minimap launcher, import/export and read-only tracker. Author confirms permission to distribute official catalogue data. Exact game-client version has not been recorded; further compatibility testing welcome. Requires bundled AzerothSurvivors and AzerothSurvivorsAPI; no automated gameplay actions."
+        "notes": "Author-tested v0.5.1: capture current run, observed banishments preserved across reloads, improved legendary amulet identification, minimap launcher, import/export and read-only tracker. Author confirms catalogue redistribution permission. Requires bundled AzerothSurvivors and AzerothSurvivorsAPI. Game-client certification pending; no automated gameplay actions."
       }
     },
     {
